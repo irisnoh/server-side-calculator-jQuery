@@ -4,12 +4,33 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = 5000;
 let mathResults = [ {
-    results:'something'
+    results: 14,
+    add: 100,
+    subtract: 104,
 }];
 
+let addResults = [100,40,10];
 app.use(express.static('server/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+
+app.get('/add', (req,res) => {
+    res.send(addResults)
+});
+
+app.post('/newadd', (req,res) => {
+    addResults.push(req.body);
+ let sum = (Number(req.body.add1) + Number(req.body.add2))
+    res.sendStatus(200);
+    return sum
+});
+
+app.post('/newadd', (req,res) => {
+    mathResults.add.push(req.body);
+    res.sendStatus(200);
+}
+);
 
 app.get('/results', (req,res) => {
     res.send(mathResults);
