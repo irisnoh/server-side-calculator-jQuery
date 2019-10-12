@@ -10,9 +10,15 @@ let mathResults = [ {
 }];
 
 let addResults = [100,40,10];
+
 app.use(express.static('server/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.post('/clear-games', (req,res) => {
+    mathResults = [];
+    res.sendStatus(200);
+}
+);
 
 
 app.get('/add', (req,res) => {

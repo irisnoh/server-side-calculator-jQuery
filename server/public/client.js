@@ -9,9 +9,9 @@ let operator = "";
 $(document).ready(function () {
     console.log('in jqeruy');
     $('.buttonOperator').on('click', onAllOperators)
-    // $('#clear').on('click', onClearClick)
+    $('#clear').on('click', handleClearButton)
 
-    // getMathResults() // keep whats in my mathResults on DOM when refreshed  //call the function to display calculation history at each browser refresh
+    getMathResults() // keep whats in my mathResults on DOM when refreshed  //call the function to display calculation history at each browser refresh
 })
 
 function onAllOperators() {
@@ -40,22 +40,33 @@ function onAllOperators() {
 // }
 
 
-// function getMathResults() {
-//     $.ajax({
-//         type: 'GET',
-//         url: '/results'
-//     }).then(function (response) {
-//         $('#appendMathHere').empty();
-//         for (let i = 0; i < response.length; i++) {
-//             let results = response[i];
-//             $('#appendMathHere').append(`
-//         <li>${results}</li>
-//         `)
-//         }
-//     })
-// }
-
-function onClearClick() {
-    $('#clear').toggleClass('clickedButton')
-    console.log('i/m clearing');
+function getMathResults() {
+    $.ajax({
+        type: 'GET',
+        url: '/results'
+    }).then(function (response) {
+        $('#appendMathHere').empty();
+        for (let i = 0; i < response.length; i++) {
+            let results = response[i];
+            $('#appendMathHere').append(`
+        <li>${results}</li>
+        `)
+        }
+    })
 }
+function handleClearButton() {
+    console.log('i/ll delete everything');
+    if (confirm('are you sure? this will delete ALL history')) {
+        $.ajax({
+            type: 'POST',
+            url: '/clear-games',
+        }).then(function () {
+            getMathResults();
+        })
+    } else {
+        console.log('they said no');
+    }
+}
+
+
+
