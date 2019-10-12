@@ -45,3 +45,28 @@ app.post('/newresults', (req,res) => {
 app.listen(PORT, () => {
     console.log(`Up and running on PORT: ${PORT}`);
 });
+
+// function mathResults(calc) {
+//     var x = parseInt(calc.numOne);
+//     var y = parseInt(calc.numTwo);
+//     var operation = calc.operator;
+//     var result;
+  
+//     switch (operation) {
+//       case 'add':
+//         result = x + y;
+//         break;
+//       case 'subtract':
+//         result = x - y;
+//         break;
+//       case 'multiply':
+//         result = x * y;
+//         break;
+//       case 'divide':
+//         result = x / y;
+//         break;
+//       default:
+//         result = "calculator temporarily out of order";
+//     }
+//     return result;
+//   }
