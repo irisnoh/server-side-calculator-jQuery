@@ -7,12 +7,13 @@ console.log('im in javascript');
 let operator = "";
 
 $(document).ready(function () {
-    console.log('in jqeruy');
+    console.log('in jquery');
     $('.buttonOperator').on('click', onAllOperators)
-    $('#clear').on('click', handleClearButton)
-    $('#equal').on('click', postMathResults)
+    // $('#clear').on('click', handleClearButton)
+    $('#equal').on('click', postMathResults);
     getMathResults() // keep whats in my mathResults on DOM when refreshed  //call the function to display calculation history at each browser refresh
 })
+
 
 function onAllOperators() {
     // gets the content of whatever is between the operator button opening and closing tags.
@@ -38,11 +39,7 @@ function onAllOperators() {
     }
 }
 
-// function handleEqualClick() { // this will display result onto DOM
-//     getMathResults();
-//     console.log(postMathResults());
-//     console.log('i display result on DOM');
-// }
+
 
 
 function postMathResults() { //ajax post call to server, number from DOM to server
@@ -53,11 +50,14 @@ function postMathResults() { //ajax post call to server, number from DOM to serv
             firstNumber: $('#numberOne').val(),
             operator: operator,
             secondNumber: $('#numberTwo').val(),
-            result: 'from the display'
+            result: ''
         }
-    }).then(function (response) {
+    }).then(function () {
+        console.log ('inpostmath');
         $('#appendMathHere').empty();
-        getMathResults()
+        getMathResults();
+        $('.myInputs').val('');
+
 
     }
     )
@@ -66,31 +66,33 @@ function postMathResults() { //ajax post call to server, number from DOM to serv
 function getMathResults() { //ajax gets number from the server to DOM
     $.ajax({
         type: 'GET',
-        url: '/newresults'
+        url: '/results'
     }).then(function (response) {
         for (let i = 0; i < response.length; i++) {
             let results = response[i];
-            $('#appendMathHere').append(`
-        <li>${results.firstNumber}${results.operator}${results.secondNumber}${results.result}
+            $('#appendMathHere').append(` 
+        <li>${results.firstNumber}${results.operator}${results.secondNumber} = ${results.result}
         </li>
         `)
         }
     })
 }
 
-function handleClearButton() {
-    console.log('i/ll delete everything');
-    if (confirm('are you sure? this will delete ALL history')) {
-        $.ajax({
-            type: 'POST',
-            url: '/clear-games',
-        }).then(function () {
-            getMathResults();
-        })
-    } else {
-        console.log('they said no');
-    }
-}
+
+
+// function handleClearButton() {
+//     console.log('i/ll delete everything');
+//     if (confirm('are you sure? this will delete ALL history')) {
+//         $.ajax({
+//             type: 'POST',
+//             url: '/clear-games',
+//         }).then(function () {
+//             getMathResults();
+//         })
+//     } else {
+//         console.log('they said no');
+//     }
+// }
 
 
 
