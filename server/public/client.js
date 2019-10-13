@@ -10,8 +10,7 @@ $(document).ready(function () {
     console.log('in jqeruy');
     $('.buttonOperator').on('click', onAllOperators)
     $('#clear').on('click', handleClearButton)
-    $('#equal').on('click', handleEqualClick)
-
+    $('#equal').on('click', postMathResults)
     getMathResults() // keep whats in my mathResults on DOM when refreshed  //call the function to display calculation history at each browser refresh
 })
 
@@ -39,52 +38,46 @@ function onAllOperators() {
     }
 }
 
-function handleEqualClick() { // this will display result onto DOM
-    getMathResults()
-    console.log (getMathResults);
-    console.log('i display result on DOM');
-}
+// function handleEqualClick() { // this will display result onto DOM
+//     getMathResults();
+//     console.log(postMathResults());
+//     console.log('i display result on DOM');
+// }
 
 
-function getMathResults() {
+function postMathResults() { //ajax post call to server, number from DOM to server
     $.ajax({
         type: 'POST',
         url: '/results',
         data: {
             firstNumber: $('#numberOne').val(),
-            operator: operator, 
+            operator: operator,
             secondNumber: $('#numberTwo').val(),
             result: 'from the display'
         }
     }).then(function (response) {
         $('#appendMathHere').empty();
+        getMathResults()
+
+    }
+    )
+}
+
+function getMathResults() { //ajax gets number from the server to DOM
+    $.ajax({
+        type: 'GET',
+        url: '/newresults'
+    }).then(function (response) {
         for (let i = 0; i < response.length; i++) {
             let results = response[i];
             $('#appendMathHere').append(`
-        <li>${results}</li>
+        <li>${results.firstNumber}${results.operator}${results.secondNumber}${results.result}
+        </li>
         `)
         }
     })
 }
 
-// function getMathResults() { // seperate one to post NUMBER
-//     $.ajax({
-//         type: 'POST',
-//         url: '/results',
-//         data: {
-//             number1: ,
-            
-//         }
-//     }).then(function (response) {
-//         $('#appendMathHere').empty();
-//         for (let i = 0; i < response.length; i++) {
-//             let results = response[i];
-//             $('#appendMathHere').append(`
-//         <li>${results}</li>
-//         `)
-//         }
-//     })
-// }
 function handleClearButton() {
     console.log('i/ll delete everything');
     if (confirm('are you sure? this will delete ALL history')) {
