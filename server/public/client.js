@@ -9,7 +9,7 @@ let operator = "";
 $(document).ready(function () {
     console.log('in jquery');
     $('.buttonOperator').on('click', onAllOperators)
-    // $('#clear').on('click', handleClearButton)
+    $('#clear').on('click', handleClearButton)
     $('#equal').on('click', postMathResults);
     getMathResults() // keep whats in my mathResults on DOM when refreshed  //call the function to display calculation history at each browser refresh
 })
@@ -57,6 +57,7 @@ function postMathResults() { //ajax post call to server, number from DOM to serv
         $('#appendMathHere').empty();
         getMathResults();
         $('.myInputs').val('');
+        
 
 
     }
@@ -74,25 +75,27 @@ function getMathResults() { //ajax gets number from the server to DOM
         <li>${results.firstNumber}${results.operator}${results.secondNumber} = ${results.result}
         </li>
         `)
+        $('#numberDisplay').text(`${results.result}`)
+       
         }
     })
 }
 
 
 
-// function handleClearButton() {
-//     console.log('i/ll delete everything');
-//     if (confirm('are you sure? this will delete ALL history')) {
-//         $.ajax({
-//             type: 'POST',
-//             url: '/clear-games',
-//         }).then(function () {
-//             getMathResults();
-//         })
-//     } else {
-//         console.log('they said no');
-//     }
-// }
+function handleClearButton() {
+    console.log('i/ll delete everything');
+    if (confirm('are you sure? this will delete ALL history')) {
+        $.ajax({
+            type: 'POST',
+            url: '/clear-games',
+        }).then(function () {
+            getMathResults();
+        })
+    } else {
+        console.log('they said no');
+    }
+}
 
 
 
