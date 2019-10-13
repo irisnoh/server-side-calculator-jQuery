@@ -56,7 +56,7 @@ function postMathResults() { //ajax post call to server, number from DOM to serv
         console.log ('inpostmath');
         $('#appendMathHere').empty();
         getMathResults();
-        $('.myInputs').val('');
+       
         
 
 
@@ -84,17 +84,18 @@ function getMathResults() { //ajax gets number from the server to DOM
 
 
 function handleClearButton() {
-    console.log('i/ll delete everything');
-    if (confirm('are you sure? this will delete ALL history')) {
-        $.ajax({
-            type: 'POST',
-            url: '/clear-games',
-        }).then(function () {
-            getMathResults();
-        })
-    } else {
-        console.log('they said no');
-    }
+    $('.myInputs').val('');
+    // console.log('i/ll delete everything');
+    // if (confirm('are you sure? this will delete ALL history')) {
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: '/clear-games',
+    //     }).then(function () {
+    //         postMathResults();
+    //     })
+    // } else {
+    //     console.log('they said no');
+    // }
 }
 
 

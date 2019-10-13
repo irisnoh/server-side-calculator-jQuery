@@ -16,12 +16,7 @@ app.use(express.static('server/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/clear-games', (req, res) => {
-    mathResultsArray = [{
-        firstNumber: '',
-        operator: '',
-        secondNumber: '',
-        result: ''
-    }];
+    mathResultsArray = [];
     res.sendStatus(200);
 }
 );
