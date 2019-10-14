@@ -7,11 +7,12 @@ console.log('im in javascript');
 let operator = "";
 
 $(document).ready(function () {
+    getMathResults(); // keep whats in my mathResults on DOM when refreshed  //call the function to display calculation history at each browser refresh
     console.log('in jquery');
-    $('.buttonOperator').on('click', onAllOperators)
-    $('#clear').on('click', handleClearButton)
+    $('.buttonOperator').on('click', onAllOperators);
+    $('#clear').on('click', handleClearButton);
     $('#equal').on('click', postMathResults);
-    getMathResults() // keep whats in my mathResults on DOM when refreshed  //call the function to display calculation history at each browser refresh
+
 })
 
 
@@ -53,13 +54,9 @@ function postMathResults() { //ajax post call to server, number from DOM to serv
             result: ''
         }
     }).then(function () {
-        console.log ('inpostmath');
+        console.log('inpostmath');
         $('#appendMathHere').empty();
         getMathResults();
-       
-        
-
-
     }
     )
 }
@@ -69,14 +66,16 @@ function getMathResults() { //ajax gets number from the server to DOM
         type: 'GET',
         url: '/results'
     }).then(function (response) {
-        for (let i = 0; i < response.length; i++) {
+
+
+        for (let i = 1; i < response.length; i++) {
             let results = response[i];
             $('#appendMathHere').append(` 
-        <li>${results.firstNumber}${results.operator}${results.secondNumber} = ${results.result}
+        <li>${results.firstNumber}${results.operator}${results.secondNumber}=${results.result}
         </li>
         `)
-        $('#numberDisplay').text(`${results.result}`)
-       
+            $('#numberDisplay').text(`${results.result}`)
+
         }
     })
 }

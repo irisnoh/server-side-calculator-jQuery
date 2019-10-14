@@ -1,3 +1,13 @@
-.clickedButton {
-    background-color: lightblue;
+button:hover {
+    /* background-color: lightblue; */
+    background-color: #00cccc;
+    color: black;
+    border-radius: 25px;
+};
+
+.body {
+    background-color: orange;
+    /* background-image: linear-gradient(to bottom right, red, yellow); */
+      
 }
+
