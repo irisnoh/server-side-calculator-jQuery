@@ -1,10 +1,16 @@
-# Project Name
+#jQuery-Server-Side-Calculator
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
 
-![calculator interface](images/serverCalculator.png)
+
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
+This project creates a server side calculator using jQuery.js and Node.js.
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/github-finalization-assignment).
+
+-Enter two numbers and click an operator. On Equal sign will operate the math function and display answer
+
+-Clear input and delete history
+
+
+
+![calculator interface](images/serverCalculator.png)
