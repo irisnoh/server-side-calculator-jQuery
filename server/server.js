@@ -1,8 +1,11 @@
-const express = require('express');
+const express = require('express'); 
 const bodyParser = require('body-parser');
-
-const app = express();
+const app = express(); // express as a function
 const PORT = 5000;
+
+app.use(express.static('server/public'));
+app.use(bodyParser.urlencoded({ extended: true }));
+
 let mathResultsArray = [{
     firstNumber: "",
     operator: '',
@@ -10,16 +13,10 @@ let mathResultsArray = [{
     result: ''
 }];
 
-// let addResults = [100,40,10];
-
-app.use(express.static('server/public'));
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.delete('/results', (req, res) => {
-    mathResultsArray = [];
+app.delete('/results', (req, res) => { 
+    mathResultsArray = []; //reassign array as an empty array
     res.sendStatus(200);
 });
-
 
 app.post('/results', (req, res) => {
     mathResultsArray.push(req.body) //use req.body to take place of data
@@ -43,39 +40,10 @@ app.post('/results', (req, res) => {
 });
 
 
-
 app.get('/results', (req, res) => {
     res.send(mathResultsArray);
 }
 );
-
-
-// function mathResults(calc) {
-//     var x = parsInt(calc.firstNumber);
-//     var y = parsInt(calc.secondNumber);
-//     var operation = calc.operator;
-//     var result;
-
-//     switch (operation) {
-//         case 'add':
-//             result = x + y;
-//             break;
-//         case 'subtract':
-//             result = x - y;
-//             break;
-//         case 'multiply':
-//             result = x * y;
-//             break;
-//         case 'divide':
-//             result = x / y;
-//             break;
-//         default:
-//             result = "calculator out of order";
-//     }
-// }
-
-
-
 
 app.listen(PORT, () => {
     console.log(`Up and running on PORT: ${PORT}`);

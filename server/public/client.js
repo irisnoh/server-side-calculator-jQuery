@@ -9,7 +9,7 @@ let operator = "";
 $(document).ready(function () {
     getMathResults(); // keep whats in my mathResults on DOM when refreshed  //call the function to display calculation history at each browser refresh
     console.log('in jquery');
-    $('.buttonOperator').on('click', onAllOperators);
+    $('.buttonOperator').on('click', onAllOperators); 
     $('#clear').on('click', handleClearButton);
     $('#equal').on('click', postMathResults);
     $('#delete').on('click', handleDeleteButton)
@@ -40,8 +40,6 @@ function onAllOperators() {
 }
 
 
-
-
 function postMathResults() { //ajax post call to server, number from DOM to server
     $.ajax({
         type: 'POST',
@@ -66,24 +64,22 @@ function getMathResults() { //ajax gets number from the server to DOM
     }).then(function (response) {
         $('#appendMathHere').empty();
         for (let i = 1; i < response.length; i++) {
-            let results = response[i];
+            let results = response[i]; 
             $('#appendMathHere').append(` 
         <li>${results.firstNumber}${results.operator}${results.secondNumber}=${results.result}
         </li>
-        `)
+        `) // append results onto the DOM
             $('#numberDisplay').text(`${results.result}`)
-
         }
     })
 }
 
-
-
-function handleClearButton() {
+function handleClearButton() { // clears input values on DOM
     $('.myInputs').val('');
 }
 
-function handleDeleteButton() {
+function handleDeleteButton() { // deletes history on DOM
+    if (confirm('This will delete all history, are you sure?')) // pop to confirm deletion 
     $.ajax({
         type: 'DELETE',
         url: '/results',
@@ -92,18 +88,4 @@ function handleDeleteButton() {
         console.log('this will delete all history');
     }
     )};
-    // console.log('i/ll delete everything');
-    // if (confirm('are you sure? this will delete ALL history')) {
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: '/clear-games',
-    //     }).then(function () {
-    //         postMathResults();
-    //     })
-    // } else {
-    //     console.log('they said no');
-    // }
-
-
-
 
