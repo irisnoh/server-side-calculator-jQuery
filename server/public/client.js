@@ -12,9 +12,8 @@ $(document).ready(function () {
     $('.buttonOperator').on('click', onAllOperators);
     $('#clear').on('click', handleClearButton);
     $('#equal').on('click', postMathResults);
-
+    $('#delete').on('click', handleDeleteButton)
 })
-
 
 function onAllOperators() {
     // gets the content of whatever is between the operator button opening and closing tags.
@@ -55,7 +54,6 @@ function postMathResults() { //ajax post call to server, number from DOM to serv
         }
     }).then(function () {
         console.log('inpostmath');
-        $('#appendMathHere').empty();
         getMathResults();
     }
     )
@@ -66,6 +64,7 @@ function getMathResults() { //ajax gets number from the server to DOM
         type: 'GET',
         url: '/results'
     }).then(function (response) {
+        $('#appendMathHere').empty();
         for (let i = 1; i < response.length; i++) {
             let results = response[i];
             $('#appendMathHere').append(` 
@@ -82,6 +81,17 @@ function getMathResults() { //ajax gets number from the server to DOM
 
 function handleClearButton() {
     $('.myInputs').val('');
+}
+
+function handleDeleteButton() {
+    $.ajax({
+        type: 'DELETE',
+        url: '/results',
+    }).then(function () {
+        getMathResults();
+        console.log('this will delete all history');
+    }
+    )};
     // console.log('i/ll delete everything');
     // if (confirm('are you sure? this will delete ALL history')) {
     //     $.ajax({
@@ -93,7 +103,7 @@ function handleClearButton() {
     // } else {
     //     console.log('they said no');
     // }
-}
+
 
 
 

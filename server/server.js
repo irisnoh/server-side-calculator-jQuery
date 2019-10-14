@@ -15,11 +15,11 @@ let mathResultsArray = [{
 app.use(express.static('server/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post('/clear-games', (req, res) => {
+app.delete('/results', (req, res) => {
     mathResultsArray = [];
     res.sendStatus(200);
-}
-);
+});
+
 
 app.post('/results', (req, res) => {
     mathResultsArray.push(req.body) //use req.body to take place of data
@@ -41,6 +41,7 @@ app.post('/results', (req, res) => {
     }
     res.send(mathResultsArray);
 });
+
 
 
 app.get('/results', (req, res) => {
