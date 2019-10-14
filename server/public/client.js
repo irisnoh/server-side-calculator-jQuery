@@ -41,6 +41,14 @@ function onAllOperators() {
 
 
 function postMathResults() { //ajax post call to server, number from DOM to server
+   let firstNumber = $('#numberOne').val();
+   let secondNumber = $('#numberTwo').val();
+
+   // not appending math now though
+    if(firstNumber === '' || secondNumber === '' || operator === '') {
+        alert('fields can not be empty');
+       }
+    else {
     $.ajax({
         type: 'POST',
         url: '/results',
@@ -52,9 +60,11 @@ function postMathResults() { //ajax post call to server, number from DOM to serv
         }
     }).then(function () {
         console.log('inpostmath');
-        getMathResults();
+        getMathResults()
+    
     }
     )
+}
 }
 
 function getMathResults() { //ajax gets number from the server to DOM

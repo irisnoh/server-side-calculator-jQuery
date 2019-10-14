@@ -4,6 +4,12 @@ button:hover {
     color: #99ccff;
     border-radius: 5px;
 }
+
+#delete:hover {
+    background-color: red;
+    color: #ffffcc;
+    border-radius: 5px;
+}
 .myInputs {
     background-color: #ffffcc;
     text-align: center;
@@ -12,6 +18,7 @@ button:hover {
 h1 {
     color:  #ffffcc;
     text-align: center;
+    font-family: Arial Narrow;
 }
 
 #appendMathHere {
@@ -24,6 +31,18 @@ h1 {
 .flex-container {
     text-align: center;
 }
+
 body {
     background-color:#99ccff;
+    background-image: url("images/backgroundimage.jpg");
     }
+
+#border {
+    border-radius: 25px;
+    /* background-image: url(/images/backgroundimage.jpg); */
+    background: #b3d9ff;
+    padding: 100px;
+    width: 500px;
+    height: 150px;
+    margin: 0 auto;
+}

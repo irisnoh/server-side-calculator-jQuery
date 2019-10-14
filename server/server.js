@@ -37,6 +37,7 @@ app.post('/results', (req, res) => {
         req.body.result = Number(numberOne) / Number(numberTwo)
     }
     res.send(mathResultsArray);
+    
 });
 
 
