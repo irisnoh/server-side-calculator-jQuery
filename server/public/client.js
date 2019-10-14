@@ -66,8 +66,6 @@ function getMathResults() { //ajax gets number from the server to DOM
         type: 'GET',
         url: '/results'
     }).then(function (response) {
-
-
         for (let i = 1; i < response.length; i++) {
             let results = response[i];
             $('#appendMathHere').append(` 

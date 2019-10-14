@@ -14,19 +14,21 @@
 <h1>Server-Side-Calculator</h1>
 
 <body>
-    <input type="number" class=myInputs id="numberOne" />
-    <button id="add" class = "buttonOperator">+</button>
-    <button id="subtract"  class = "buttonOperator">-</button>
-    <button id="multiply"  class = "buttonOperator">*</button>
-    <button id="divide"  class = "buttonOperator">/</button>
-    <input type="number" class=myInputs id="numberTwo" />
-    <button id="equal">=</button>
-    <button id="clear">C</button>
-
-    <h2 id="numberDisplay"> </h2>
+    <div class="flex-container">
+        <input placeholder="First Number" type="number" class=myInputs id="numberOne" />
+        <button id="add" class="buttonOperator">+</button>
+        <button id="subtract" class="buttonOperator">-</button>
+        <button id="multiply" class="buttonOperator">*</button>
+        <button id="divide" class="buttonOperator">/</button>
+        <input placeholder="Second Number" type="number" class=myInputs id="numberTwo" />
+        <button id="equal">=</button>
+        <button id="clear">C</button>
+    </div>
+    <h1 id="numberDisplay"> </h1>
     <ul id="appendMathHere">
-       
+
     </ul>
+
 </body>
 
 </html>

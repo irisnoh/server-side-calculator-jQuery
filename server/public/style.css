@@ -1,13 +1,29 @@
 button:hover {
     /* background-color: lightblue; */
-    background-color: #00cccc;
-    color: black;
-    border-radius: 25px;
-};
-
-.body {
-    background-color: orange;
-    /* background-image: linear-gradient(to bottom right, red, yellow); */
-      
+    background-color: #ffffcc;
+    color: #99ccff;
+    border-radius: 5px;
+}
+.myInputs {
+    background-color: #ffffcc;
+    text-align: center;
 }
 
+h1 {
+    color:  #ffffcc;
+    text-align: center;
+}
+
+#appendMathHere {
+    color:  #ffffcc;
+    list-style-type: none;
+    width: 100px;
+    height: 500px;
+    margin: 0 auto;
+}
+.flex-container {
+    text-align: center;
+}
+body {
+    background-color:#99ccff;
+    }
