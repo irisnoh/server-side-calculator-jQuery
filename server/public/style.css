@@ -1,5 +1,6 @@
+
+
 button:hover {
-    /* background-color: lightblue; */
     background-color: #ffffcc;
     color: #99ccff;
     border-radius: 5px;
@@ -28,21 +29,37 @@ h1 {
     height: 500px;
     margin: 0 auto;
 }
+
 .flex-container {
     text-align: center;
 }
 
+
+html {
+    min-height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat:no-repeat;
+    background: -webkit-linear-gradient( to right top, #ed4264, #ffffcc);
+    background: -moz-linear-gradient(to right top, #ed4264, #ffffcc);
+    background: -ms-linear-gradient(to right top, #ed4264, #ffffcc);
+    background: -o-linear-gradient(to right top, #ed4264, #ffffcc);
+    background: linear-gradient(to right top, #ed4264, #ffffcc);
+}
+
 body {
-    background-color:#99ccff;
-    background-image: url("images/backgroundimage.jpg");
+	font-family: sans-serif;
+    font-weight: 100;    
     }
 
-#border {
+
+/* #border {
     border-radius: 25px;
-    /* background-image: url(/images/backgroundimage.jpg); */
-    background: #b3d9ff;
+    background: pink;
     padding: 100px;
     width: 500px;
     height: 150px;
     margin: 0 auto;
-}
+} */

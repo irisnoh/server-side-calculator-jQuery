@@ -44,7 +44,6 @@ function postMathResults() { //ajax post call to server, number from DOM to serv
    let firstNumber = $('#numberOne').val();
    let secondNumber = $('#numberTwo').val();
 
-   // not appending math now though
     if(firstNumber === '' || secondNumber === '' || operator === '') {
         alert('fields can not be empty');
        }

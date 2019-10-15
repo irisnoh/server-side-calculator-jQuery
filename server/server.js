@@ -36,7 +36,7 @@ app.post('/results', (req, res) => {
     else if (req.body.operator == '/') {
         req.body.result = Number(numberOne) / Number(numberTwo)
     }
-    res.send(mathResultsArray);
+    res.send(mathResultsArray); //does this need to be res.sendstatus(200?)
     
 });
 
