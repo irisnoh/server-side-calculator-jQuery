@@ -11,6 +11,8 @@ This project creates a server side calculator using jQuery.js and Node.js.
 
 -Clear input and delete history
 
+Deployed Application can be found: 
+https://peaceful-brushlands-94842.herokuapp.com/
 
 
 ![calculator interface](images/serverCalculator.png)
